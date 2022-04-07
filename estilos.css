@@ -1,5 +1,7 @@
 body{ 
     background-color: #eef9bf;
+    box-sizing: border-box;
+   
 }
 
 header{
@@ -8,8 +10,73 @@ header{
     justify-content: center;
     align-items: center;
     margin-top: 40px;
+    margin-bottom: 100px;
     color: #75b79e;
     font-family: 'Roboto', sans-serif;
     font-weight: 700;
     width: 100%;
+}
+
+.carta{
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 150px;
+  
+}
+
+.frente div, .verso div{
+    width: 117px;
+    height: 146px;
+    background-color: #99CEA8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #99CEA8;
+    border-radius: 5px;
+}
+
+.frente li, .verso li{
+    margin-left: 10px;
+    margin-top: 20px;
+}
+
+.frente ul{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 800px;
+}
+.verso ul{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 800px;
+}
+.frente img, .verso img{
+    width: 100px;
+    height: 100px;
+}
+
+.verso img{
+    background-color: #99CEA8;
+}
+
+.frente li:hover{
+    transform: rotatey(180deg);
+}
+
+.cartas{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d
+}
+
+.virar{
+    transform: rotatey(180deg);
 }
