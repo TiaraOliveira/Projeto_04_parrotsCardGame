@@ -16,14 +16,13 @@ function entrada() {
 function cartasnamesa() {
     contador = 0;
     while (contador < quantidade) {
-        let cards = document.querySelector(".face");
+        let cards = document.querySelector(".frente ul");
 
         cards.innerHTML += `
-        <li class="cadafrente">
-            <div>
+        
+            <div onclick="virar(this)">
                 <img src="/imagens/front.png" alt="">
              </div>
-        </li>
         `;
         contador++;
 
@@ -62,16 +61,16 @@ function versocartas() {
 
     versocompleto.sort(comparador);
     while (i < quantidade) {
-        let back = document.querySelector(".verset");
+        let back = document.querySelector(".verso ul");
 
         back.innerHTML += `
-         <li class="cadafrente">
-            <div>
+         
+            <div class="vira24">
                 <span>
                      ${versocompleto[i]} 
                 </span>
             </div>
-         </li>
+         
 `
         i++;
 
