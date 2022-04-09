@@ -16,80 +16,42 @@ header {
     font-weight: 700;
     width: 100%;
 }
-
-.carta{
-    height: 100px;
+.cards{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 150px;
+    
+}
+.card {
+    width: 117px;
+    height: 146px;
+    position: relative;
+    margin-left: 30px;
+}
+
+.face{
+    width: 100%;
+    height: 100%;
+    background-color: #A7E9AF;
+    border-radius: 10px;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: absolute;
     backface-visibility: hidden;
     transition: all .5s;
     transform-style: preserve-3d;
 }
 
-.frente div,
-.verso div {
-    width: 117px;
-    height: 146px;
-    background-color: #99CEA8;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid #99CEA8;
-    border-radius: 5px;
-    margin-left: 20px;
-    margin-top: 30px;
-}
-
-
-
-.frente ul {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    width: 800px;
-}
-
-.verso ul {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    width: 800px;
-}
-
-.frente img,
-.verso img {
-    width: 100px;
-    height: 100px;
-}
-
-.verso img {
-    background-color: #99CEA8;
-}
-
-.cartas {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-}
-
-.verso {
+.back-face {
     transform: rotateY(180deg);
 }
-/* mantém verso no verso */
 
-.cartas:active .frente ul{
-    transform: rotateY(-180deg);
-} 
-
-.cartas:active .verso ul{
+.desroda-back-face{
     transform: rotateY(0deg);
 }
 
-
+.rodar-front-face{
+    transform: rotateY(-180deg);
+}
