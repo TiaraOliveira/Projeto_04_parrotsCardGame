@@ -1,3 +1,6 @@
+let click1;
+let click2;
+let jogadas = 0;
 let quantidade = 0
 
 function entrada() {
@@ -11,22 +14,22 @@ function entrada() {
 }
 
 function cartasnamesa() {
-    i = 0;
+    
     const versos = [
-        `<img src="/imagens/explodyparrot.gif" alt="">`,
-        `<img src="/imagens/explodyparrot.gif" alt="">`,
-        `<img src="/imagens/fiestaparrot.gif" alt="">`,
-        `<img src="/imagens/fiestaparrot.gif" alt=""> `,
-        `<img src="/imagens/revertitparrot.gif" alt="">`,
-        `<img src="/imagens/revertitparrot.gif" alt="">`,
-        `<img src="/imagens/tripletsparrot.gif" alt="">`,
-        `<img src="/imagens/tripletsparrot.gif" alt="">`,
-        `<img src="/imagens/metalparrot.gif" alt="">`,
-        `<img src="/imagens/metalparrot.gif" alt="">`,
-        `<img src="/imagens/unicornparrot.gif" alt="">`,
-        `<img src="/imagens/unicornparrot.gif" alt="">`,
-        `<img src="/imagens/bobrossparrot.gif" alt="">`,
-        `<img src="/imagens/bobrossparrot.gif" alt="">`,
+        "/imagens/explodyparrot.gif",
+        "/imagens/explodyparrot.gif",
+        "/imagens/fiestaparrot.gif",
+        "/imagens/fiestaparrot.gif",
+        "/imagens/revertitparrot.gif",
+        "/imagens/revertitparrot.gif",
+        "/imagens/tripletsparrot.gif",
+        "/imagens/tripletsparrot.gif",
+        "/imagens/metalparrot.gif",
+        "/imagens/metalparrot.gif",
+        "/imagens/unicornparrot.gif",
+        "/imagens/unicornparrot.gif",
+        "/imagens/bobrossparrot.gif",
+        "/imagens/bobrossparrot.gif",
     ]
 
 
@@ -34,19 +37,18 @@ function cartasnamesa() {
     const versocompleto = [];
     while (v1 < quantidade) {
         versocompleto.push(versos[v1])
-
         v1++;
-
     }
 
     versocompleto.sort(comparador);
+    i = 0;
     while (i < quantidade) {
         let back = document.querySelector(".cards");
 
         back.innerHTML += `
         <div class="card" onclick="virar(this)">
                 <img class="front-face face" src="/imagens/front.png" alt="">
-               <figure class="back-face face">${versocompleto[i]} </figure>  
+                <img src=".${versocompleto[i]}" alt="" class="back-face face">
         </div>
         `
         i++;
@@ -59,34 +61,44 @@ function comparador() {
 
 function virar(elemento) {
     
-    console.log(click1)
-    console.log(click2)
     if (click1) {
         console.log("Entrandoa qui")
         let backfaceImage = elemento.querySelector(".back-face");
         elemento.querySelector(".front-face").classList.add("rodar-front-face");
         backfaceImage.classList.add("desroda-back-face");
+        elemento.classList.add(".selecionadas")
 
-        console.log(backfaceImage.src);
+        
         click2 = backfaceImage.src;
         console.log("segundo", click2)
 
 
         if (click1 == click2) {
             console.log("mesma carta")
+
+
         }
         else {
             console.log("Cartas diferentes, virando de volta...")
-            //Desviro as cartas
+            desvira();
         }
     }
     else {
         let backfaceImage = elemento.querySelector(".back-face");
         elemento.querySelector(".front-face").classList.add("rodar-front-face");
         backfaceImage.classList.add("desroda-back-face");
+        
 
-        console.log(backfaceImage.src);
+        
         click1 = backfaceImage.src;
         console.log(click1)
     }
+
+
+}
+
+function desvira(elemento){
+    let virada = elemento.querySelectorAll(".selecionadas")
+    elemento.querySelector(".front-face .selecionada").classList.toggle("rodar-front-face");
+    
 }

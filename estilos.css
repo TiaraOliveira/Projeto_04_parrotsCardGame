@@ -1,6 +1,10 @@
 body {
     background-color: #eef9bf;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
 }
 
@@ -17,8 +21,10 @@ header {
     width: 100%;
 }
 .cards{
+    width: 814px;
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
     align-items: center;
     
 }
@@ -26,7 +32,8 @@ header {
     width: 117px;
     height: 146px;
     position: relative;
-    margin-left: 30px;
+    margin-left: 10px;
+    margin-top: 10px;
 }
 
 .face{
@@ -55,3 +62,4 @@ header {
 .rodar-front-face{
     transform: rotateY(-180deg);
 }
+
