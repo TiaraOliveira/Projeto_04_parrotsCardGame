@@ -23,6 +23,18 @@ h1{
     font-weight: 700;
     
 }
+
+.relogio{
+    height: 30px;
+    width: 50px;
+    background-color: black;
+}
+
+.relogio span{
+ color: red;
+}
+
+
 .cards{
     width: 900px;
     display: flex;
