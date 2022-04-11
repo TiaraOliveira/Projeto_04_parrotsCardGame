@@ -86,7 +86,9 @@ h1{
     transform: rotateY(-180deg);
 }
 
-
+.desabilita{
+    pointer-events: none;
+}
 
 /* MOBILE */
 @media (max-width: 414px){

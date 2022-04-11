@@ -58,7 +58,7 @@ function cartasnamesa() {
         back.innerHTML += `
         <div class="card" onclick="virar(this)">
                 <img class="front-face face" src="/imagens/front.png" alt="">
-                <img src=".${versocompleto[i]}" alt="" class="back-face face">
+                <img src=".${versocompleto[i]}" alt="" class="back-face face naovirada">
         </div>
         `
         i++;
@@ -69,7 +69,9 @@ function comparador() {
     return Math.random() - 0.5;
 }
 
+
 function virar(elemento) {
+    console.log("Here I am")
     cronometro();
     if (click1) {
         backfaceImagesecond = elemento.querySelector(".back-face");
@@ -77,8 +79,19 @@ function virar(elemento) {
         frontfaceImagesecond.classList.add("rodar-front-face");
         backfaceImagesecond.classList.add("desroda-back-face");
         click2 = backfaceImagesecond.src;
-        console.log("segundo", click2)
-        compararcartas()
+  
+
+        if (click1 === click2) {
+            cartascerta += 2
+            setTimeout(fimdojogo, 50)
+            elemento.classList.add("desabilita")
+            click1 = ""
+        } else {
+            console.log("Cartas diferentes, virando de volta...")
+            click1 = ""
+            elemento.classList.remove("desabilita")
+            setTimeout(desvirarfirst, 1000);
+        }
 
         jogadas += 2
         console.log(`jogadas ${jogadas}`)
@@ -90,33 +103,19 @@ function virar(elemento) {
         frontfaceImagesfirst = elemento.querySelector(".front-face")
         frontfaceImagesfirst.classList.add("rodar-front-face");
         backfaceImagefirst.classList.add("desroda-back-face");
+        
+        elemento.classList.add("desabilita")
         click1 = backfaceImagefirst.src;
     }
 }
 
-function compararcartas() {
-    if (click1 === click2) {
-        cartascerta += 2
-        console.log(`cartas certas ${cartascerta}`)
-        setTimeout(fimdojogo, 500)
-       
-
-        click1 = ""
-
-
-
-    } else {
-        console.log("Cartas diferentes, virando de volta...")
-        click1 = ""
-        setTimeout(desvirarfirst, 1000);
-    }
-}
 
 function desvirarfirst() {
     frontfaceImagesfirst.classList.remove("rodar-front-face");
     backfaceImagefirst.classList.remove("desroda-back-face");
     frontfaceImagesecond.classList.remove("rodar-front-face");
     backfaceImagesecond.classList.remove("desroda-back-face");
+    
 }
 
 /* cronometro em segundos */
@@ -133,7 +132,7 @@ function timer() {
 function fimdojogo(){
      if (cartascerta == quantidade) {
         clearInterval(idInterval)
-        alert(`fim do jogo: Você terminou o jogo com ${jogadas} e em ${tempototal} segundos `)
-    
+        alert(`PARABÉNS: Você terminou o jogo com ${jogadas} jogadas e em ${tempototal} segundos `)
+        
     }
 }
