@@ -1,7 +1,13 @@
 let click1;
 let click2;
 let jogadas = 0;
-let quantidade = 0
+let quantidade = 0;
+let cartasselecionadas = 0;
+let selection;
+let backfaceImagefirst;
+let backfaceImagesecond;
+let frontfaceImagesecond;
+let frontfaceImagesfirst;
 
 function entrada() {
     quantidade = prompt("Quantas cartas deseja")
@@ -14,7 +20,7 @@ function entrada() {
 }
 
 function cartasnamesa() {
-    
+
     const versos = [
         "/imagens/explodyparrot.gif",
         "/imagens/explodyparrot.gif",
@@ -60,45 +66,45 @@ function comparador() {
 }
 
 function virar(elemento) {
-    
-    if (click1) {
-        console.log("Entrandoa qui")
-        let backfaceImage = elemento.querySelector(".back-face");
-        elemento.querySelector(".front-face").classList.add("rodar-front-face");
-        backfaceImage.classList.add("desroda-back-face");
-        elemento.classList.add(".selecionadas")
-
-        
-        click2 = backfaceImage.src;
+  if (click1) {
+        backfaceImagesecond = elemento.querySelector(".back-face");
+        frontfaceImagesecond = elemento.querySelector(".front-face")
+        frontfaceImagesecond.classList.add("rodar-front-face");
+        backfaceImagesecond.classList.add("desroda-back-face");
+        click2 = backfaceImagesecond.src;
         console.log("segundo", click2)
-
-
-        if (click1 == click2) {
-            console.log("mesma carta")
-
-
-        }
-        else {
-            console.log("Cartas diferentes, virando de volta...")
-            desvira();
-        }
+        compararcartas()
+     
     }
     else {
-        let backfaceImage = elemento.querySelector(".back-face");
-        elemento.querySelector(".front-face").classList.add("rodar-front-face");
-        backfaceImage.classList.add("desroda-back-face");
-        
-
-        
-        click1 = backfaceImage.src;
+        backfaceImagefirst = elemento.querySelector(".back-face");
+        frontfaceImagesfirst = elemento.querySelector(".front-face")
+        frontfaceImagesfirst.classList.add("rodar-front-face");
+        backfaceImagefirst.classList.add("desroda-back-face");
+        click1 = backfaceImagefirst.src;
         console.log(click1)
+        console.log("eu aquiiiiiiiii meu deus me AJUDA")
     }
-
-
 }
 
-function desvira(elemento){
-    let virada = elemento.querySelectorAll(".selecionadas")
-    elemento.querySelector(".front-face .selecionada").classList.toggle("rodar-front-face");
+function compararcartas(){
+    console.log("to aqui papai")
+    if (click1 === click2) {
+        console.log("mesma carta")
+        click1 = ""
+        
+    } else {
+        console.log("Cartas diferentes, virando de volta...")
+        click1 = ""
+        click1 = ""
+        setInterval(desvirarfirst, 1000);
+    }
+}
+
+function desvirarfirst() {
+    frontfaceImagesfirst.classList.remove("rodar-front-face");
+    backfaceImagefirst.classList.remove("desroda-back-face");
+    frontfaceImagesecond.classList.remove("rodar-front-face");
+    backfaceImagesecond.classList.remove("desroda-back-face");
     
 }
