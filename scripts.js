@@ -12,6 +12,8 @@ let cartascerta = 0;
 let contador = 0;
 let idInterval;
 let tempototal;
+let primeiroclick;
+let segundoclick;
 
 function entrada() {
     quantidade = prompt("Insira um número par entre 4 e 14!")
@@ -19,6 +21,21 @@ function entrada() {
     while (quantidade > 14 || quantidade == 0 || quantidade < 4 || quantidade == null || quantidade % 2 != 0) {
         quantidade = prompt("Comando inválido.  Quantas cartas deseja")
     }
+
+    if (quantidade == 10){
+        let janela10 = document.querySelector(".cards")
+        janela10.classList.add("cards10")
+    } if (quantidade == 8){
+        let janela8 = document.querySelector(".cards")
+        janela8.classList.add("cards8")
+    }if (quantidade == 6){
+        let janela6 = document.querySelector(".cards")
+        janela6.classList.add("cards6")
+    }if (quantidade == 12){
+        let janela12 = document.querySelector(".cards")
+        janela12.classList.add("cards12")
+    }
+
     cartasnamesa();
 
 }
@@ -72,24 +89,28 @@ function comparador() {
 
 function virar(elemento) {
     console.log("Here I am")
+
+    let teste = document.querySelector(".card img")
     cronometro();
     if (click1) {
         backfaceImagesecond = elemento.querySelector(".back-face");
         frontfaceImagesecond = elemento.querySelector(".front-face")
         frontfaceImagesecond.classList.add("rodar-front-face");
         backfaceImagesecond.classList.add("desroda-back-face");
+        segundoclick = elemento
+        segundoclick.classList.add("desabilita")
         click2 = backfaceImagesecond.src;
   
 
         if (click1 === click2) {
             cartascerta += 2
             setTimeout(fimdojogo, 50)
-            elemento.classList.add("desabilita")
             click1 = ""
         } else {
             console.log("Cartas diferentes, virando de volta...")
             click1 = ""
-            elemento.classList.remove("desabilita")
+            primeiroclick.classList.remove("desabilita")
+            segundoclick.classList.remove("desabilita")
             setTimeout(desvirarfirst, 1000);
         }
 
@@ -103,8 +124,11 @@ function virar(elemento) {
         frontfaceImagesfirst = elemento.querySelector(".front-face")
         frontfaceImagesfirst.classList.add("rodar-front-face");
         backfaceImagefirst.classList.add("desroda-back-face");
-        
+        primeiroclick = elemento
         elemento.classList.add("desabilita")
+        console.log(`${primeiroclick}`)
+        
+       
         click1 = backfaceImagefirst.src;
     }
 }
