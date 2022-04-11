@@ -10,9 +10,11 @@ let frontfaceImagesecond;
 let frontfaceImagesfirst;
 let cartascerta = 0;
 let contador = 0;
+let idInterval;
+let tempototal;
 
 function entrada() {
-    quantidade = prompt("Quantas cartas deseja")
+    quantidade = prompt("Insira um número par entre 4 e 14!")
 
     while (quantidade > 14 || quantidade == 0 || quantidade < 4 || quantidade == null || quantidade % 2 != 0) {
         quantidade = prompt("Comando inválido.  Quantas cartas deseja")
@@ -69,7 +71,7 @@ function comparador() {
 
 function virar(elemento) {
     cronometro();
-  if (click1) {
+    if (click1) {
         backfaceImagesecond = elemento.querySelector(".back-face");
         frontfaceImagesecond = elemento.querySelector(".front-face")
         frontfaceImagesecond.classList.add("rodar-front-face");
@@ -77,11 +79,11 @@ function virar(elemento) {
         click2 = backfaceImagesecond.src;
         console.log("segundo", click2)
         compararcartas()
-        
-        jogadas++
+
+        jogadas += 2
         console.log(`jogadas ${jogadas}`)
-        
-     
+
+
     }
     else {
         backfaceImagefirst = elemento.querySelector(".back-face");
@@ -89,26 +91,20 @@ function virar(elemento) {
         frontfaceImagesfirst.classList.add("rodar-front-face");
         backfaceImagefirst.classList.add("desroda-back-face");
         click1 = backfaceImagefirst.src;
-        console.log(click1)
-        console.log("eu aquiiiiiiiii meu deus me AJUDA")
-        jogadas++
-        console.log(jogadas)
     }
 }
 
-function compararcartas(){
-    console.log("to aqui papai")
+function compararcartas() {
     if (click1 === click2) {
-        console.log("mesma carta")
         cartascerta += 2
-        if (cartascerta === quantidade){
-            novamente = prompt("fim do jogo ")
-            }
         console.log(`cartas certas ${cartascerta}`)
+        setTimeout(fimdojogo, 500)
+       
+
         click1 = ""
 
-        
-        
+
+
     } else {
         console.log("Cartas diferentes, virando de volta...")
         click1 = ""
@@ -121,16 +117,23 @@ function desvirarfirst() {
     backfaceImagefirst.classList.remove("desroda-back-face");
     frontfaceImagesecond.classList.remove("rodar-front-face");
     backfaceImagesecond.classList.remove("desroda-back-face");
-    
 }
 
-
-function cronometro(){
-    setInterval(timer, 1000)
+/* cronometro em segundos */
+function cronometro() {
+    idInterval = setInterval(timer, 1000)
 }
 
-function timer(){
+function timer() {
     contador++;
-    let acrescentaminuto = document.querySelector(".relogio") 
-    acrescentaminuto.innerHTML = contador
+    let acrescentaminuto = document.querySelector(".relogio span")
+    tempototal = acrescentaminuto.innerHTML = contador
+}
+
+function fimdojogo(){
+     if (cartascerta == quantidade) {
+        clearInterval(idInterval)
+        alert(`fim do jogo: Você terminou o jogo com ${jogadas} e em ${tempototal} segundos `)
+    
+    }
 }

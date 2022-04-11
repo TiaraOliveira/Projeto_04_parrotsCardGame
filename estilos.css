@@ -6,9 +6,6 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
- 
-    
-
 }
 
 h1{
@@ -17,21 +14,32 @@ h1{
     justify-content: space-around;
     align-items: center;
     margin-top: 40px;
-    margin-bottom: 50px;
+    margin-bottom: 10px;
     color: #75b79e;
     font-family: 'Roboto', sans-serif;
     font-weight: 700;
-    
+ 
+}
+
+.horas{
+    display: flex;
+    justify-content: flex-end ;
+    margin-right: 200px;
+    width: 100%;
 }
 
 .relogio{
-    height: 30px;
+    height: 45px;
     width: 50px;
-    background-color: black;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .relogio span{
- color: red;
+    color: #75b79e;
+    font-size: 40px;
 }
 
 
