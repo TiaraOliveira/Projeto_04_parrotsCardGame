@@ -74,6 +74,7 @@ function virar(elemento) {
         click2 = backfaceImagesecond.src;
         console.log("segundo", click2)
         compararcartas()
+        
      
     }
     else {
@@ -84,6 +85,7 @@ function virar(elemento) {
         click1 = backfaceImagefirst.src;
         console.log(click1)
         console.log("eu aquiiiiiiiii meu deus me AJUDA")
+        
     }
 }
 
